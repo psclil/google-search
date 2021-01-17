@@ -1,6 +1,6 @@
 module github.com/psclil/google-search
 
-go 2.01
+go 1.15
 
 require (
 	github.com/gocolly/colly/v2 v2.0.1
