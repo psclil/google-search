@@ -2,7 +2,6 @@ package googlesearch
 
 import (
 	"context"
-	"fmt"
 	"github.com/gocolly/colly/v2"
 	neturl "net/url"
 	"strconv"
@@ -371,5 +370,5 @@ func url(searchTerm string, countryCode string, languageCode string, limit int, 
 		queryString.Set("num", strconv.Itoa(limit))
 	}
 
-	return fmt.Sprintf("%s?%s", googleBase, queryString.Encode())
+	return googleBase + queryString.Encode()
 }
