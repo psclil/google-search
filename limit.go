@@ -11,7 +11,6 @@ import (
 //
 // See: https://github.com/rocketlaunchr/google-search#warning-warning
 var ErrBlocked = errors.New("google block")
-
 // RateLimit sets a global limit to how many requests to Google Search can be made in a given time interval.
 // The default is unlimited (but obviously Google Search will block you temporarily if you do too many
 // calls too quickly).

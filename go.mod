@@ -1,4 +1,4 @@
-module github.com/rocketlaunchr/google-search
+module github.com/psclil/google-search
 
 go 1.12
 
