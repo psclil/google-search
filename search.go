@@ -2,6 +2,7 @@ package googlesearch
 
 import (
 	"context"
+	"github.com/PuerkitoBio/goquery"
 	"github.com/gocolly/colly/v2"
 	neturl "net/url"
 	"strconv"
@@ -311,6 +312,13 @@ func Search(ctx context.Context, searchTerm string, opts ...SearchOptions) ([]Re
 			item := sel.Eq(i)
 
 			rDiv := item.Find("div.rc")
+
+			if rDiv.Length() == 0 {
+				// try another way
+				rDiv = item.Find("div[data-hveid]").FilterFunction(func(_ int, sel *goquery.Selection)bool{
+					return sel.Find("h3 a, a h3").Length() > 0
+				})
+			}
 
 			linkHref, _ := rDiv.Find("a").Attr("href")
 			linkText := strings.TrimSpace(linkHref)
